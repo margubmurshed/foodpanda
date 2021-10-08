@@ -1,0 +1,118 @@
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    min-height: 100vh;
+    background-color: #ececec;
+    padding: 30px 0;
+}
+
+.form-container input{
+    display: block;
+    width: 100%;
+    background-color: #fff5f9;
+    border-radius: 30px;
+    border: 1px solid #ffcce2;
+    margin-bottom: 10px;
+    padding: 15px 25px;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-container input[type = 'submit']{
+    background-color: #D50E63;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.form-container input[type = 'submit']:hover{
+    transition: 0.5s ease all;
+    background-color: #ec1371;
+}
+
+.main-form{
+    background-color: rgb(255, 255, 255);
+    /* box-shadow: 0px 0px 50px 1px rgba(0, 0, 0, 0.2); */
+    padding: 30px 30px;
+    border-radius: 10px;
+    width: 350px;
+}
+
+.main-form img{
+    width: 250px;
+    display: flex;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+.welcome-login-text{
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0px !important;
+}
+
+.welcome-sign-text{
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0px !important;
+}
+
+.login-text{
+    margin: 0 !important;
+    text-align: center;
+    padding-bottom: 30px;
+    color: rgb(94, 94, 94);
+    font-weight: 300;
+}
+
+.forgot-password-link {
+    text-decoration: none;
+    color: rgb(94, 94, 94);
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    padding-top: 30px;
+}
+
+.toggle-btn{
+    border: 0;
+    color: #ec1371 !important;
+    background-color: #ffcce2 !important;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 10px !important;
+    padding: 10px 15px !important;
+    width: 100px;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.main-form a:hover{
+    transition: 0.3s ease all;
+    color: #D50E63;
+}
+
+.err-message{
+    color: red;
+    display: block;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.login-err-message{
+    color: rgb(252, 63, 63);
+    background-color: rgb(255, 214, 214);
+    padding: 10px 0;
+    display: block;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+}

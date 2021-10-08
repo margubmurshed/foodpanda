@@ -1,0 +1,66 @@
+*{
+    font-family: 'poppins';
+}
+
+.burger-builder-container{
+    background-color: #fff !important;
+    padding: 0 20px;
+    height: 100vh;
+}
+
+.changeBtn{
+    padding: 1px 10px;
+    background-color: #dddddd;
+    border: 0;
+    margin: 2px;
+}
+
+.side-ingredients-container{
+    padding: 0 !important;
+    border-radius: 10px;
+}
+
+.header-side-ingredients{
+    padding: 10px 20px;
+    background-color: rgb(255, 206, 227);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.header-side-ingredients p{
+    margin: 0 !important;
+    font-size: 24px;
+    font-weight: 700;
+    color: rgb(250, 118, 173);
+}
+
+.side-ingredients-container-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.sideIngredient{
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: rgb(219, 219, 219);
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.burger-container{
+    padding: 50px 0;
+}
+
+@media (max-width: 768px) {
+    .side-ingredients-container{
+        padding: 50px;
+    }
+
+    .burger-container{
+        padding: 50px 0;
+    }
+}

@@ -1,0 +1,95 @@
+
+.Orders{
+    padding: 50px 50px;
+    background-color: #ececec !important;
+    height: 100vh;
+}
+
+.Ordertitle{
+    font-size: 24px;
+    text-align: left;
+    font-weight: 600;
+    color: rgb(24, 24, 24);
+}
+
+.OrdersTable{
+    background-color: #ECECEC;
+}
+
+.OrdersTable table{
+    background-color: #fff;
+    border-radius: 20px;
+    border: 1px solid #f1f1f1 !important;
+}
+
+.OrdersTable table th{
+    border-bottom: 1px solid #f1f1f1 !important;
+    padding: 30px 40px !important;
+    color: rgb(209, 209, 209);
+}
+
+.OrdersTable table td{
+    padding: 20px 40px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.OrdersTable table .total{
+    color: #D50E63 !important;
+    font-weight: 700;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    border-radius: 10px;
+}
+
+
+.order-status-btn{
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 15px;
+    background-color: rgb(253, 253, 192);
+    color: rgb(167, 167, 0);
+    font-weight: 500;
+}
+
+.not-found p {
+    text-align: center !important;
+    font-weight: 700;
+    color: rgb(226, 226, 226);
+    padding: 20px;
+    font-size: 28px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.ingredient-amount {
+    color: #fff;
+    background-color: #D50E63;
+    padding: 4px 12px;
+    border-radius: 50%;
+    font-size: 16px;
+}
+
+@media (max-width: 425px) {
+    .Orders{
+        padding: 50px 20px;
+    }
+    
+    .OrdersTable table td {
+        padding: 10px 20px;
+        font-weight: 600;
+        text-transform: capitalize;
+        font-size: 14px;
+    }
+
+    .OrdersTable table th {
+        padding: 20px 20px !important;
+    }
+
+    .ingredient-amount {
+        padding: 4px 9px;
+        font-size: 10px;
+    }
+}

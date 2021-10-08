@@ -1,0 +1,13 @@
+export const addIngredient = "ADD_INGREDIENT";
+export const removeIngredient = "REMOVE_INGREDIENT";
+export const updatePurchasable = "UPDATE_PURCHASABLE";
+export const resetPurchasable = "RESET_PURCHASABLE";
+export const loadOrders = "LOAD_ORDERS";
+export const orderError = "ORDER_ERR";
+export const authSuccess = "AUTH_SUCCESS";
+export const authFailed = "AUTH_FAILED";
+export const addUser = "ADD_USER";
+export const loadUsers = "LOAD_USER";
+export const authRemove = "AUTH_REMOVE";
+export const authLoading = "AUTH_LOADING";
+export const removeErrMessage = "REMOVE_ERROR_MESSAGE";

@@ -1,0 +1,108 @@
+.navbar-container{
+    border-top: 1px solid #E5E7EB;
+    border-bottom: 1px solid #E5E7EB;
+    background-color: #ffffff;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+.navbar-toggler-icon {
+    background-image: url('../../assets/images/bar.svg');
+    outline: none !important;
+    font-size: 16px;
+}
+
+.navbar-toggler-icon svg{
+    color: red;
+}
+
+.navbar-toggler:focus {
+    text-decoration: none;
+    box-shadow: none !important;
+}
+
+.router-nav-link{
+    text-decoration: none;
+    color: #474747;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.3s ease all;
+    font-weight: 500;
+    margin: 0 10px;
+}
+
+.router-nav-link:hover{
+    padding: 10px;
+    background-color: #f3f3f3;
+    color: #474747;
+    transition: 0.5s ease all;
+}
+
+.router-nav-link-login{
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #D82270;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: 0.3s ease all;
+    font-weight: 500;
+    margin: 0 10px;
+}
+
+.router-nav-link-login:hover{
+    background-color: #f0428d;
+    color: #ffffff;
+    transition: 0.5s ease all;
+}
+
+.dashboard-link {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: rgb(255 202 225);
+    border-radius: 5px;
+    color: #d82270;
+    text-transform: capitalize;
+    font-weight: 600;
+    border: 0;
+}
+
+.dashboard-link svg {
+    margin-right: 10px;
+}
+
+.dashboard-link:hover{
+    color: #d82270;
+}
+
+.dropdown-btn {
+    background-color: #ffffff !important;
+    border-color: #ffffff !important;
+}
+
+.dropdown-item:hover{
+    background-color: #fff !important;
+}
+.dropdown-item:focus{
+    background-color: #fff !important;
+}
+
+@media (max-width: 991px) {
+    .nav-item{
+        padding: 5px 10px;
+    }
+
+    .router-nav-link{
+        text-decoration: none;
+        padding: 5px 10px;
+        transition: 0.3s ease all;
+    }
+    
+    .router-nav-link:hover{
+        padding: 5px 10px;
+        color: #D82270;
+        background-color: transparent;
+        transition: 0.5s ease all;
+    }
+}

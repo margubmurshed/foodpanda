@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import Home from './pages/Home';
+import Orders from './pages/Orders/Orders';
+import Checkout from './pages/Checkout/Checkout';
+import Auth from './pages/Auth/Auth';
+
+import { Route, Redirect } from 'react-router';
+import { useSelector, useDispatch } from 'react-redux';
+import { AuthCheck } from './Redux/AuthActionCreator';
+import { useEffect } from 'react';
 import './App.css';
 
-function App() {
+
+const App = () => {
+  const dispatch = useDispatch();
+  const token = useSelector(({ token }) => token);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => dispatch(AuthCheck()), []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      {token === null ? (
+        <>
+          <Route path="/login" exact component={Auth} />
+          <Redirect to="/login" />
+        </>
+      ) : (
+        <>
+          <Route path="/home" exact component={Home} />
+          <Route path="/orders" exact component={Orders} />
+          <Route path="/checkout" exact component={Checkout} />
+          <Redirect from="/" to="/home" />
+        </>
+      )}
+    </>
+  )
 }
 
 export default App;

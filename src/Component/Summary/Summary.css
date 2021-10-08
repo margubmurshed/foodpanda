@@ -1,0 +1,43 @@
+.modal-footer {
+    justify-content: center !important;
+}
+
+.modal h3,h6,p{
+    margin: 0 !important;
+    text-transform: capitalize !important;
+    margin: 10px 5px !important;
+}
+
+.summary-ingredients{
+    background-color: rgb(216,34,112);
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.summary-total-price{
+    font-weight: 700 !important;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.btn-success {
+    background-color: #00b952 !important;
+    border: 0 !important;
+}
+
+.summary-btn{
+    width: 100% !important;
+}
+
+.summary-heading{
+    justify-content: center !important;
+}
+
+.summary-heading h5 {
+    text-align: center !important;
+    font-weight: 700 !important;
+    color: rgb(216,34,112);
+    font-size: 24px;
+}
