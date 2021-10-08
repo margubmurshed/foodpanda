@@ -3,13 +3,13 @@ import SummaryCard from './SummaryCard';
 import Form from './CheckoutForm';
 import './Checkout.css';
 import Header from '../../Component/Header/Header';
-import axios from 'axios';
 import { resetPurchasable } from '../../Redux/ActionCreator';
 import { LoadUsers } from '../../Redux/AuthActionCreator';
 import Spinner from '../../Component/Spinner/spinner';
 import date from 'date-and-time';
 import { useDispatch, useSelector } from 'react-redux';
 import Alert from '../../Component/Alert';
+import { db } from '../../firebase';;
 
 const MapState = state => ({
     ingredients: state.ingredients,
@@ -36,6 +36,7 @@ const Checkout = () => {
     const dispatch = useDispatch();
     const { fullname, email, phone, address } = customerInfo;
     const filteredIngredients = ingredients.filter(({ amount }) => amount !== 0);
+    const DELIVERY_CHARGE = 60;
 
     useEffect(() => {
         document.title = 'Checkout || FoodPanda';
@@ -43,7 +44,7 @@ const Checkout = () => {
 
     const inputChangeHandler = e => {
         setCustomerInfo({
-            ...this.state.customerInfo,
+            ...customerInfo,
             [e.target.name]: e.target.value
         });
     }
@@ -56,15 +57,15 @@ const Checkout = () => {
         return {
             customerDetails: customerInfo,
             ingredients: ingredients,
-            totalPrice: total,
+            totalPrice: total + DELIVERY_CHARGE,
             time: date.format(new Date(), 'DD MMM, YYYY')
         }
     }
 
-    const submitOrder = (updatedUser, uid) => {
+    const submitOrder = (updatedUser, userId) => {
         setLoading(true);
         setAlert([]);
-        axios.put(`https://foodpanda-marufshobo-default-rtdb.firebaseio.com/users/${uid}.json`, updatedUser)
+        db.ref().child('users').child(userId).set(updatedUser)
             .then(() => {
                 resetForm();
                 dispatch(resetPurchasable())
@@ -110,6 +111,7 @@ const Checkout = () => {
                         <SummaryCard
                             filteredIngredients={filteredIngredients}
                             total={total}
+                            deliveryCharge={DELIVERY_CHARGE}
                         />
                     </div>
                 </div>

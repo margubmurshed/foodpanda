@@ -2,8 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-const SummaryCard = ({ filteredIngredients, total }) => {
-    const DeliveryCharge = 60;
+const SummaryCard = ({ filteredIngredients, total, deliveryCharge }) => {
     return (
         <div className="col-lg-6 cart-summary-container">
             <div className="row cart-summary-card">
@@ -21,11 +20,11 @@ const SummaryCard = ({ filteredIngredients, total }) => {
                     ))}
                     <p className="summary-card-item">
                         <span className="summary-card-item-name">Delivery Charge</span>
-                        <span> = {DeliveryCharge} Taka</span>
+                        <span> = {deliveryCharge} Taka</span>
                     </p>
                 </div>
                 <div className="col-lg-12">
-                    <h5 className="summary-card-footer-title">Total : {total + DeliveryCharge} Taka</h5>
+                    <h5 className="summary-card-footer-title">Total : {total + deliveryCharge} Taka</h5>
                 </div>
             </div>
         </div>
