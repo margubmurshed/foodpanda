@@ -20,7 +20,7 @@
     padding: 15px 0 !important;
 }
 
-.enabled-checkout-btn{
+.enabled-checkout-btn {
     width: 100%;
     margin-top: 10px;
     border-color: #fff !important;
@@ -28,7 +28,7 @@
     padding: 15px 0 !important;
 }
 
-.enabled-checkout-btn svg{
+.enabled-checkout-btn svg {
     color: #fff !important;
     font-size: 24px !important;
     margin-left: 10px;
@@ -38,10 +38,10 @@
     vertical-align: -6px !important;
 }
 
-.control-item{
+.control-item {
     align-items: center !important;
     text-transform: capitalize;
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 .control-item .changeBtn {
@@ -53,23 +53,22 @@
     color: #fff;
 }
 
-.control-item-buttons{
+.control-item-buttons {
     display: flex !important;
     justify-content: space-evenly;
 }
 
-.control-container{
+.control-container {
     padding: 0 20px;
 }
 
 @media (max-width: 991px) {
-    .control-item-buttons{
+    .control-item-buttons {
         display: flex !important;
         justify-content: left;
         padding-top: 10px;
     }
-
-    .control-container{
+    .control-container {
         padding: 0 20px;
     }
 }

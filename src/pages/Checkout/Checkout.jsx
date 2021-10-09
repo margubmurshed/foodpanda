@@ -9,13 +9,14 @@ import Spinner from '../../Component/Spinner/spinner';
 import date from 'date-and-time';
 import { useDispatch, useSelector } from 'react-redux';
 import Alert from '../../Component/Alert';
-import { db } from '../../firebase';;
+import { db } from '../../firebase';
+import { useHistory } from 'react-router';
 
 const MapState = state => ({
     ingredients: state.ingredients,
     total: state.total,
     purchasable: state.purchasable,
-    userId: state.userId,
+    docID: state.user.docID,
     user: state.user,
     orders: state.orderState.orders,
 })
@@ -29,10 +30,11 @@ const initialCustomerInfo = {
 }
 
 const Checkout = () => {
-    const { ingredients, total, purchasable, userId, user, orders } = useSelector(MapState);
+    const { ingredients, total, purchasable, docID, user, orders } = useSelector(MapState);
     const [customerInfo, setCustomerInfo] = useState(initialCustomerInfo);
     const [loading, setLoading] = useState(false);
     const [alerts, setAlert] = useState([]);
+    const history = useHistory();
     const dispatch = useDispatch();
     const { fullname, email, phone, address } = customerInfo;
     const filteredIngredients = ingredients.filter(({ amount }) => amount !== 0);
@@ -62,30 +64,33 @@ const Checkout = () => {
         }
     }
 
-    const submitOrder = (updatedUser, userId) => {
+    const submitOrder = (updatedUser, docID) => {
         setLoading(true);
         setAlert([]);
-        db.ref().child('users').child(userId).set(updatedUser)
+        db.ref().child('users').child(docID).set(updatedUser)
             .then(() => {
                 resetForm();
                 dispatch(resetPurchasable())
                 dispatch(LoadUsers())
                 setLoading(false);
-                setAlert({ message: 'Order has been placed', color: 'green' })
+                setAlert([{ message: 'Order has been placed', color: 'green' }])
+                setTimeout(() => history.push('/home'), 5000);
             })
             .catch(() => {
                 setLoading(false);
-                setAlert({ message: 'Action Failed', color: 'red' })
+                setAlert([{ message: 'Action Failed', color: 'red' }])
             });
     }
 
     const submitHandler = e => {
         e.preventDefault();
         const filteredIngredients = ingredients.filter(({ amount }) => amount !== 0);
-        const order = createOrder(filteredIngredients, total);
-        const updatedOrders = [...orders, order];
-        const updatedUser = { ...user, orders: updatedOrders };
-        submitOrder(updatedUser, userId)
+        if (filteredIngredients.length) {
+            const order = createOrder(filteredIngredients, total);
+            const updatedOrders = [...orders, order];
+            const updatedUser = { ...user, orders: updatedOrders };
+            submitOrder(updatedUser, docID);
+        }
     }
 
     if (loading) return (
@@ -100,8 +105,8 @@ const Checkout = () => {
             <Header />
             <div className="main-checkout-container">
                 <div className="checkout-container">
-                    {alerts.length ? alerts.map(({ message, color }) => <Alert message={message} color={color} key={Math.random()} />) : null}
                     <div className="row checkout-content">
+                        <Alert alerts={alerts} remove={() => setAlert([])} />
                         <Form
                             values={{ fullname, email, phone, address }}
                             inputChangeHandler={inputChangeHandler}

@@ -4,7 +4,7 @@ import * as ActionTypes from './ActionTypes';
 const AuthLoading = (isLoading, message = "") => {
     return {
         type: ActionTypes.authLoading,
-        payload: {isLoading, message}
+        payload: { isLoading, message }
     }
 }
 
@@ -26,23 +26,20 @@ export const Authenticator = (email, password, mode, name) => {
     return dispatch => {
         dispatch(AuthLoading(true));
         const data = { email, password, returnSecureToken: true };
-        let WEB_API_KEY = "AIzaSyC5BxAmGGDdW5uNyDfKHf55fxIjYHhevjw";
+        let WEB_API_KEY = "AIzaSyAkBY-J8RbtM9DyzmV29pnlYzpvsG_1NXk";
 
         if (mode === 'Login') {
             axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + WEB_API_KEY, data)
-                .then(response => response.data)
-                .then(data => {
-                    const {idToken, localId, expiresIn} = data;
+                .then(({ data: { idToken, localId, expiresIn } }) => {
                     SetLocalStore(idToken, localId, expiresIn);
                     dispatch(AuthSuccess(idToken, localId));
-                    LoadUsersCreator();
+                    loadUsers();
                     dispatch(AuthLoading(false));
                 })
                 .catch(err => dispatch(AuthLoading(false, err.response.data.error.message)))
         } else {
             axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" + WEB_API_KEY, data)
-                .then(response => {
-                    const {idToken, localId, expiresIn} = response.data;
+                .then(({ data: { idToken, localId, expiresIn } }) => {
                     SetLocalStore(idToken, localId, expiresIn);
                     dispatch(AuthSuccess(idToken, localId));
                     AddUser(name, email, localId, idToken);
@@ -52,24 +49,24 @@ export const Authenticator = (email, password, mode, name) => {
         }
 
         const AddUser = (name, email, userId, token) => {
-            const USER = { name, email, userId, orders: '' };
-            axios.post("https://foodpanda-marufshobo-default-rtdb.firebaseio.com/users.json", USER)
+            const user = { name, email, userId, orders: '' };
+            axios.post("https://margubpanda-default-rtdb.asia-southeast1.firebasedatabase.app/users.json", user)
                 .then(() => {
-                    dispatch({ type: ActionTypes.addUser, payload: {userId, token} })
-                    LoadUsersCreator();
+                    dispatch({ type: ActionTypes.addUser, payload: { userId, token } })
+                    loadUsers();
                 })
         }
 
-        const LoadUsersCreator = () => {
-            axios.get("https://foodpanda-marufshobo-default-rtdb.firebaseio.com/users.json")
-                .then(response => dispatch({ type: ActionTypes.loadUsers, payload: response.data }))
+        const loadUsers = () => {
+            axios.get("https://margubpanda-default-rtdb.asia-southeast1.firebasedatabase.app/users.json")
+                .then(({ data }) => dispatch({ type: ActionTypes.loadUsers, payload: data }))
         }
     }
 }
 
 export const LoadUsers = () => {
     return dispatch => {
-        axios.get("https://foodpanda-marufshobo-default-rtdb.firebaseio.com/users.json")
+        axios.get("https://margubpanda-default-rtdb.asia-southeast1.firebasedatabase.app/users.json")
             .then(response => dispatch({ type: ActionTypes.loadUsers, payload: response.data }))
     }
 }
@@ -83,7 +80,7 @@ export const AuthCheck = () => {
         if (!!token && !!userId) {
             if (new Date().getTime() <= expTime) {
                 dispatch(AuthSuccess(token, userId))
-                axios.get("https://foodpanda-marufshobo-default-rtdb.firebaseio.com/users.json")
+                axios.get("https://margubpanda-default-rtdb.asia-southeast1.firebasedatabase.app/users.json")
                     .then(response => dispatch({ type: ActionTypes.loadUsers, payload: response.data }))
             } else {
                 Logout();

@@ -18,7 +18,7 @@ const Orders = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const orderElements = orders.length ? orders.map(item => <OrderItem order={item} />) : [];
+    const orderElements = orders.length ? orders.map(item => <OrderItem order={item} key={Math.random()} />) : [];
 
     if (isLoading) return (
         <>

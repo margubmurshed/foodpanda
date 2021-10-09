@@ -11,7 +11,8 @@ const INITIAL_STATE = {
     ],
     orderState: {
         orders: [],
-        isLoading: true
+        isLoading: true,
+        alerts: []
     },
     total: 0,
     purchasable: false,
@@ -105,10 +106,11 @@ const Reducer = (state = INITIAL_STATE, action) => {
 
         case ActionTypes.loadUsers:
             let myUser;
-            for (let userID in action.payload) {
-                let user = action.payload[userID];
+            for (let docID in action.payload) {
+                let user = action.payload[docID];
                 if (state.userId === user.userId) {
-                    myUser = user
+                    user.docID = docID;
+                    myUser = user;
                 };
             }
             const myAllOrders = myUser ? myUser.orders : [];

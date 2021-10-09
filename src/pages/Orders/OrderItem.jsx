@@ -5,7 +5,7 @@ const OrderItem = ({ order }) => {
             <td className="time">{time}</td>
             <td className="paymentMehod">{customerDetails.paymentMethod}</td>
             <td className="ingredients">
-                {ingredients.map(({ amount, type }) => <p><span className="ingredient-amount">{amount}</span> X {type}</p>)}
+                {ingredients.map(({ amount, type }) => <p key={type}><span className="ingredient-amount">{amount}</span> X {type}</p>)}
             </td>
             <td className="total">{totalPrice} Taka</td>
             <td className="total">

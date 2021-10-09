@@ -25,11 +25,9 @@ const Control = props => {
                                     if (amount) {
                                         return (
                                             <div className="col-lg-12" key={Math.random()}>
-                                                <div className="row control-item">
-                                                    <div className="col-lg-8">
-                                                        <span>{`${type} X ${amount} = ${price * amount} Taka`}</span>
-                                                    </div>
-                                                    <div className="col-lg-4 control-item-buttons">
+                                                <div className="control-item flex justify-between gap-3">
+                                                    <span>{type} X <strong>{amount}</strong> = {price * amount} Taka</span>
+                                                    <div className="control-item-buttons">
                                                         <button className="changeBtn" onClick={() => addIngredient(id)}>+</button>
                                                         <button className="changeBtn" onClick={() => removeIngredient(id)}>-</button>
                                                     </div>
@@ -47,7 +45,7 @@ const Control = props => {
                 </CardFooter>
             </Card>
             <button
-                className="btn btn-secondary enabled-checkout-btn"
+                className="btn btn-secondary enabled-checkout-btn mb-10"
                 disabled={!totalAmount}
                 onClick={toggleSummary}
             > Procced To Checkout <FontAwesomeIcon icon={faLongArrowAltRight} />
